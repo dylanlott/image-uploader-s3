@@ -10,7 +10,7 @@ const s3 = new aws.S3({
 
 const storage = multerS3({
   s3,
-  bucket: process.env.BUCKET,
+  bucket: req.params.bucket || process.env.BUCKET,
   acl: 'public-read',
   metadata: (req, file, cb) => {
     cb(null, { fieldName: file.fieldname });
